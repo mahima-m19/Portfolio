@@ -59,7 +59,7 @@ export default function ContactSection() {
 
       showToast(
         "success",
-        "Message sent successfully! I'll get back to you soon."
+        "Message sent successfully! I&apos;ll get back to you soon."
       );
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
@@ -90,7 +90,7 @@ export default function ContactSection() {
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-6 sm:mb-8">
               Have a project in mind or want to discuss opportunities? Drop me a
-              message and I'll get back to you as soon as possible.
+                message and I&apos;ll get back to you as soon as possible.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">

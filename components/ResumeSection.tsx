@@ -124,7 +124,7 @@ export default function ResumeSection() {
                   {/* Institution */}
                   <div className="flex items-center gap-2 text-xs sm:text-sm text-[var(--text-secondary)] mb-3">
                     <Building2 size={14} />
-                    <span>St. Mary's English High School</span>
+                    <span>St. Mary&apos;s English High School</span>
                   </div>
 
                   <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">

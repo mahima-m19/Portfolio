@@ -11,7 +11,7 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] =
     useState<CategoryId>("programming");
 
-  const categories: { id: CategoryId; label: string; icon: any }[] = [
+  const categories: { id: CategoryId; label: string; icon: React.ComponentType<any> }[] = [
     { id: "programming", label: "Programming", icon: Code },
     { id: "frameworks", label: "Frameworks", icon: Wrench },
     { id: "tools", label: "Tools & Software", icon: Database },

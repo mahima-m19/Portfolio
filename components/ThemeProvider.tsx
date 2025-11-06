@@ -2,23 +2,30 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-const ThemeContext = createContext({
+type Theme = "light" | "dark";
+
+type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},
 });
 
 export const useTheme = () => useContext(ThemeContext);
 
-export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    // Set initial theme
+    // Set initial theme whenever it changes
     document.documentElement.setAttribute("data-theme", theme);
-  }, []);
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
+    const newTheme: Theme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
   };

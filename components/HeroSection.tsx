@@ -53,7 +53,7 @@ export default function HeroSection() {
     }, 100); // typing speed
 
     return () => clearTimeout(typingTimeout);
-  }, [charIndex, stringIndex]);
+  }, [charIndex, stringIndex, strings]);
 
   return (
     <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
@@ -96,7 +96,7 @@ export default function HeroSection() {
 
           <p className="text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed mb-14 max-w-xl mx-auto lg:mx-0">
             Passionate about creating exceptional digital experiences that blend
-            innovative design with functional development. Let's bring your
+            innovative design with functional development. Let&apos;s bring your
             vision to life.
           </p>
 

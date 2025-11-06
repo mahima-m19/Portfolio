@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import { useTheme } from "./ThemeProvider";
 
 export default function AboutSection() {
-  const { theme } = useTheme();
 
   // const circleColor =
   //   theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
@@ -79,7 +77,7 @@ export default function AboutSection() {
             <p>
               I have hands-on experience with Python, ReactJs, Flask, and modern
               web technologies. I love turning complex problems into simple,
-              beautiful, and intuitive solutions. Whether it's building
+              beautiful, and intuitive solutions. Whether it&apos;s building
               full-stack applications or integrating ML models, I&apos;m always eager
               to learn and create innovative software projects.
             </p>
