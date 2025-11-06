@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, X, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -10,12 +11,66 @@ export default function ContactSection() {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    show: boolean;
+    type: "success" | "error";
+    message: string;
+  }>({
+    show: false,
+    type: "success",
+    message: "",
+  });
+
+  const showToast = (type: "success" | "error", message: string) => {
+    setToast({ show: true, type, message });
+    setTimeout(() => {
+      setToast({ show: false, type, message: "" });
+    }, 5000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulated form submission
-    alert("Message sent successfully!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      // Fetch credentials from environment variables
+      const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceID || !templateID || !publicKey) {
+        throw new Error("EmailJS credentials are not configured");
+      }
+
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        title: formData.subject,
+        time: new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          dateStyle: "medium",
+          timeStyle: "short",
+        }),
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      showToast(
+        "success",
+        "Message sent successfully! I'll get back to you soon."
+      );
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      showToast(
+        "error",
+        "Failed to send message. Please try again or email me directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -25,7 +80,7 @@ export default function ContactSection() {
   };
 
   return (
-    <main className="relative  flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
+    <main className="relative flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
       <div className="relative max-w-6xl w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
           {/* Left Column - Contact Info */}
@@ -49,6 +104,7 @@ export default function ContactSection() {
                   autoComplete="off"
                   className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                   required
+                  disabled={isSubmitting}
                 />
                 <input
                   type="email"
@@ -59,6 +115,7 @@ export default function ContactSection() {
                   autoComplete="off"
                   className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -71,6 +128,7 @@ export default function ContactSection() {
                 autoComplete="off"
                 className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                 required
+                disabled={isSubmitting}
               />
 
               <textarea
@@ -82,14 +140,16 @@ export default function ContactSection() {
                 rows={6}
                 className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors resize-none"
                 required
+                disabled={isSubmitting}
               />
 
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base bg-[var(--accent-color)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300 shadow-lg"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base bg-[var(--accent-color)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
@@ -164,6 +224,47 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      {/* Toast Notification - Left Side */}
+      {toast.show && (
+        <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 animate-slide-in">
+          <div className="flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] backdrop-blur-sm">
+            {toast.type === "success" ? (
+              <CheckCircle
+                size={24}
+                className="flex-shrink-0 text-[var(--accent-color)]"
+              />
+            ) : (
+              <AlertCircle size={24} className="flex-shrink-0 text-red-500" />
+            )}
+            <p className="text-sm sm:text-base font-medium max-w-xs text-[var(--text-primary)]">
+              {toast.message}
+            </p>
+            <button
+              onClick={() => setToast({ ...toast, show: false })}
+              className="ml-2 hover:opacity-70 transition-opacity text-[var(--text-secondary)]"
+            >
+              <X size={20} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes slide-in {
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .animate-slide-in {
+          animation: slide-in 0.3s ease-out;
+        }
+      `}</style>
     </main>
   );
 }
