@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 export default function HeroSection() {
@@ -17,7 +18,7 @@ export default function HeroSection() {
   ]);
 
   // Typing animation state
-  const strings = ["Web Developer", "UI/UX Designer", "Creative Thinker"];
+  const strings = useMemo(() => ["Web Developer", "UI/UX Designer", "Creative Thinker"], []);
   const [text, setText] = useState("");
   const [stringIndex, setStringIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -121,10 +122,13 @@ export default function HeroSection() {
 
           {/* Portrait */}
           <div className="relative w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[380px] md:h-[480px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
-            <img
-              src="img/profile-img.jpg"
+            <Image
+              src="/img/profile-img.jpg"
               alt="Mahima M"
+              width={520}
+              height={520}
               className="w-full h-full object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           </div>

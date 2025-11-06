@@ -11,7 +11,7 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] =
     useState<CategoryId>("programming");
 
-  const categories: { id: CategoryId; label: string; icon: React.ComponentType<any> }[] = [
+  const categories: { id: CategoryId; label: string; icon: React.ComponentType<{ size?: number; className?: string }> }[] = [
     { id: "programming", label: "Programming", icon: Code },
     { id: "frameworks", label: "Frameworks", icon: Wrench },
     { id: "tools", label: "Tools & Software", icon: Database },
@@ -49,8 +49,8 @@ export default function SkillsSection() {
     ],
   };
 
-  const circleColor =
-    theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
+  // const circleColor =
+  //   theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
 
   return (
     <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">

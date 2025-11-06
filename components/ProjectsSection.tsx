@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 
 export default function ProjectsSection() {
@@ -50,9 +51,11 @@ export default function ProjectsSection() {
             >
               {/* Project Image */}
               <div className="relative h-40 sm:h-48 overflow-hidden bg-[var(--bg-hover)]">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={800}
+                  height={600}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

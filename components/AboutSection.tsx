@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 export default function AboutSection() {
 
@@ -17,21 +18,21 @@ export default function AboutSection() {
           style={{ border: "2px solid var(--sidebar-border)" }}
         >
           {/* Profile Image */}
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="w-40 h-40 rounded-full overflow-hidden bg-[var(--bg-hover)]">
-                <img
-                  src="img/profile-img.jpg"
-                  alt="Marcus Thompson"
-                  className="w-full h-full object-cover"
-                />
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <div className="w-40 h-40 rounded-full overflow-hidden bg-[var(--bg-hover)]">
+                  <Image
+                    src="/img/profile-img.jpg"
+                    alt="Mahima M"
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Online indicator */}
+                <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-[var(--bg-secondary)]"></div>
               </div>
-              {/* Online indicator */}
-              <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-4 border-[var(--bg-secondary)]"></div>
-            </div>
-          </div>
-
-          {/* Name and Title */}
+            </div>          {/* Name and Title */}
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold mb-2">Mahima M</h2>
             <p className="text-[var(--text-secondary)] text-sm">
