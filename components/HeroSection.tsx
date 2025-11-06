@@ -88,7 +88,7 @@ export default function HeroSection() {
 
           {/* Typing Text */}
           <p className="text-xl sm:text-2xl mb-10 text-[var(--text-secondary)]">
-            I'm a{" "}
+            I&apos;m{" "}
             <span className="border-b-2 border-[var(--accent-color)] pb-1 animate-pulse">
               {text}
             </span>
