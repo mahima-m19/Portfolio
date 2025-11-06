@@ -164,7 +164,7 @@ export default function ContactSection() {
             </h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-8 sm:mb-10">
               Feel free to reach out to me for any inquiries, collaborations, or
-              just to say hello. I'm always excited to connect with fellow
+              just to say hello. I&apos;m always excited to connect with fellow
               developers and potential clients.
             </p>
 

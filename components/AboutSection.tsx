@@ -6,8 +6,8 @@ import { useTheme } from "./ThemeProvider";
 export default function AboutSection() {
   const { theme } = useTheme();
 
-  const circleColor =
-    theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
+  // const circleColor =
+  //   theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
 
   return (
     <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
@@ -71,8 +71,8 @@ export default function AboutSection() {
           {/* Description Paragraphs */}
           <div className="space-y-4 sm:space-y-6 text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed mb-8 sm:mb-12">
             <p>
-              Hello, I'm Mahima M, a Bachelor of Computer Applications student
-              from Mysore, Karnataka. I'm passionate about web development,
+              Hello, I&apos;m Mahima M, a Bachelor of Computer Applications student
+              from Mysore, Karnataka. I&apos;m passionate about web development,
               machine learning, and building intelligent applications that solve
               real-world problems.
             </p>
@@ -80,7 +80,7 @@ export default function AboutSection() {
               I have hands-on experience with Python, ReactJs, Flask, and modern
               web technologies. I love turning complex problems into simple,
               beautiful, and intuitive solutions. Whether it's building
-              full-stack applications or integrating ML models, I'm always eager
+              full-stack applications or integrating ML models, I&apos;m always eager
               to learn and create innovative software projects.
             </p>
           </div>
