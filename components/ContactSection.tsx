@@ -229,9 +229,9 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Toast Notification - Responsive Position */}
+      {/* Toast Notification - Bottom Left Position */}
       {toast.show && (
-        <div className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 z-50 animate-slide-in max-w-[calc(100vw-2rem)] sm:max-w-md">
+        <div className="fixed right-4 sm:right-6 lg:right bottom-4 sm:bottom-6 z-50 animate-slide-up max-w-[calc(100vw-2rem)] sm:max-w-md">
           <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-2xl bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] backdrop-blur-sm">
             {toast.type === "success" ? (
               <CheckCircle
@@ -258,18 +258,18 @@ export default function ContactSection() {
       )}
 
       <style jsx>{`
-        @keyframes slide-in {
+        @keyframes slide-up {
           from {
-            transform: translateX(-100%);
+            transform: translateY(100%);
             opacity: 0;
           }
           to {
-            transform: translateX(0);
+            transform: translateY(0);
             opacity: 1;
           }
         }
-        .animate-slide-in {
-          animation: slide-in 0.3s ease-out;
+        .animate-slide-up {
+          animation: slide-up 0.3s ease-out;
         }
       `}</style>
     </main>

@@ -83,7 +83,7 @@ export default function HeroSection() {
 
       {/* Content Wrapper */}
       <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 max-w-7xl w-full z-10">
-        {/* Left Text Section */}
+        {/* Left Text Section - Top part only on mobile */}
         <div className="flex-1 text-center lg:text-left w-full">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-tight mb-3">
             Port<span className="text-[var(--text-secondary)]">folio</span>
@@ -102,6 +102,30 @@ export default function HeroSection() {
                 {text}
               </span>
             </p>
+          </div>
+
+          {/* Image appears here on mobile - Hidden on lg+ */}
+          <div className="lg:hidden mb-8 sm:mb-10">
+            <div className="relative flex justify-center w-full">
+              {/* Semi-Transparent Box Behind Photo */}
+              <div
+                className="absolute w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] rounded-3xl sm:rounded-[2.5rem] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)] translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 md:translate-x-6 md:translate-y-6 backdrop-blur-sm transition-colors duration-300"
+                style={{ backgroundColor: circleColor }}
+              ></div>
+
+              {/* Portrait */}
+              <div className="relative w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] rounded-3xl sm:rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
+                <Image
+                  src="/img/hero-img.jpeg"
+                  alt="Mahima M"
+                  width={520}
+                  height={520}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              </div>
+            </div>
           </div>
 
           <p className="text-[var(--text-secondary)] text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto lg:mx-0">
@@ -127,16 +151,16 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Image Section */}
-        <div className="relative flex-1 flex justify-center w-full lg:w-auto">
+        {/* Right Image Section - Hidden on mobile, shown on lg+ */}
+        <div className="hidden lg:flex relative flex-1 justify-center w-full lg:w-auto">
           {/* Semi-Transparent Box Behind Photo */}
           <div
-            className="absolute w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)] translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 md:translate-x-6 md:translate-y-6 backdrop-blur-sm transition-colors duration-300"
+            className="absolute w-[380px] h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)] translate-x-6 translate-y-6 backdrop-blur-sm transition-colors duration-300"
             style={{ backgroundColor: circleColor }}
           ></div>
 
           {/* Portrait */}
-          <div className="relative w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
+          <div className="relative w-[380px] h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
             <Image
               src="/img/hero-img.jpeg"
               alt="Mahima M"
