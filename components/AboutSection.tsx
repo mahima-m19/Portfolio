@@ -72,10 +72,10 @@ export default function AboutSection() {
           {/* Description Paragraphs */}
           <div className="space-y-4 sm:space-y-5 md:space-y-6 text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 md:mb-12">
             <p>
-              Hello, I'm Mahima M, a Bachelor of Computer Applications student
-              from Mysore, Karnataka. I’m passionate about building intelligent,
-              scalable, and user-centric applications across web development and
-              machine learning.
+              Hello, I&apos;m Mahima M, a Bachelor of Computer Applications
+              student from Mysore, Karnataka. I&apos;m passionate about building
+              intelligent, scalable, and user-centric applications across web
+              development and machine learning.
             </p>
             <p>
               I work with technologies like Python, React.js, Flask, Django,

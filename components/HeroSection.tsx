@@ -106,7 +106,7 @@ export default function HeroSection() {
 
           <p className="text-[var(--text-secondary)] text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto lg:mx-0">
             Passionate about building intelligent, scalable solutions that
-            combine smart engineering with seamless user experiences. Let's
+            combine smart engineering with seamless user experiences. Let&apos;s
             transform innovative ideas into impactful reality together!
           </p>
 
