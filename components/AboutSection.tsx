@@ -22,7 +22,7 @@ export default function AboutSection() {
               <div className="relative">
                 <div className="w-40 h-40 rounded-full overflow-hidden bg-[var(--bg-hover)]">
                   <Image
-                    src="/img/profile-img.jpg"
+                    src="/img/profile-img.jpeg"
                     alt="Mahima M"
                     width={160}
                     height={160}

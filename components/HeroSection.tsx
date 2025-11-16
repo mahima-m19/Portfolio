@@ -123,7 +123,7 @@ export default function HeroSection() {
           {/* Portrait */}
           <div className="relative w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[380px] md:h-[480px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
             <Image
-              src="/img/profile-img.jpg"
+              src="/img/profile-img.jpeg"
               alt="Mahima M"
               width={520}
               height={520}

@@ -1,6 +1,14 @@
-// For Next.js App Router (app/layout.tsx)
+// app/layout.tsx
+import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Mahima M",
+  icons: {
+    icon: "/img/favicon.png",
+  },
+};
 
 export default function RootLayout({
   children,
