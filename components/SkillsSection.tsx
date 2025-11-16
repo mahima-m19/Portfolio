@@ -11,7 +11,11 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] =
     useState<CategoryId>("programming");
 
-  const categories: { id: CategoryId; label: string; icon: React.ComponentType<{ size?: number; className?: string }> }[] = [
+  const categories: {
+    id: CategoryId;
+    label: string;
+    icon: React.ComponentType<{ size?: number; className?: string }>;
+  }[] = [
     { id: "programming", label: "Programming", icon: Code },
     { id: "frameworks", label: "Frameworks", icon: Wrench },
     { id: "tools", label: "Tools & Software", icon: Database },
@@ -21,7 +25,7 @@ export default function SkillsSection() {
   const skills: Record<CategoryId, { name: string; level: number }[]> = {
     programming: [
       { name: "Python", level: 90 },
-      { name: "ReactJs", level: 85 },
+
       { name: "HTML & Tailwind CSS", level: 90 },
       { name: "C/C++", level: 75 },
       { name: "SQL", level: 80 },
@@ -29,8 +33,7 @@ export default function SkillsSection() {
     frameworks: [
       { name: "Django", level: 85 },
       { name: "Flask", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "Flutter", level: 80 },
+      { name: "ReactJs", level: 85 },
       { name: "Git & GitHub", level: 90 },
     ],
     tools: [
@@ -49,31 +52,28 @@ export default function SkillsSection() {
     ],
   };
 
-  // const circleColor =
-  //   theme === "dark" ? "rgba(184, 115, 51, 0.25)" : "rgba(59, 130, 246, 0.25)";
-
   return (
-    <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
+    <main className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
       <div className="relative max-w-6xl w-full z-10">
         {/* Header */}
-        <div className="mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3">
+        <div className="mb-6 sm:mb-8 md:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3">
             Skills
           </h1>
-          <p className="text-[var(--text-secondary)] text-sm sm:text-base">
+          <p className="text-[var(--text-secondary)] text-xs sm:text-sm md:text-base">
             My technical skills and expertise in various technologies and tools.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex gap-2 sm:gap-3 mb-8 sm:mb-10 flex-wrap">
+        <div className="flex gap-2 mb-6 sm:mb-8 md:mb-10 flex-wrap">
           {categories.map((category) => {
             const IconComponent = category.icon;
             return (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 ${
                   activeCategory === category.id
                     ? "bg-[var(--accent-color)] text-[var(--button-text)]"
                     : "bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
@@ -84,9 +84,9 @@ export default function SkillsSection() {
                     : { border: "1.5px solid var(--sidebar-border)" }
                 }
               >
-                <IconComponent size={16} className="sm:w-[18px] sm:h-[18px]" />
-                <span className="hidden xs:inline">{category.label}</span>
-                <span className="xs:hidden">
+                <IconComponent size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">{category.label}</span>
+                <span className="sm:hidden">
                   {category.label.split(" ")[0]}
                 </span>
               </button>
@@ -95,25 +95,25 @@ export default function SkillsSection() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
           {skills[activeCategory].map((skill, index) => (
             <div
               key={index}
-              className="p-4 sm:p-5 bg-[var(--bg-secondary)] rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
+              className="p-3 sm:p-4 md:p-5 bg-[var(--bg-secondary)] rounded-lg sm:rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl"
               style={{ border: "1.5px solid var(--sidebar-border)" }}
             >
               {/* Skill Name and Percentage */}
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="text-base sm:text-lg font-semibold">
+              <div className="flex justify-between items-center mb-2 sm:mb-3">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold">
                   {skill.name}
                 </h3>
-                <span className="text-lg sm:text-xl font-bold text-[var(--accent-color)]">
+                <span className="text-base sm:text-lg md:text-xl font-bold text-[var(--accent-color)]">
                   {skill.level}%
                 </span>
               </div>
 
               {/* Progress Bar */}
-              <div className="relative w-full h-2.5 bg-[var(--bg-hover)] rounded-full overflow-hidden">
+              <div className="relative w-full h-2 sm:h-2.5 bg-[var(--bg-hover)] rounded-full overflow-hidden">
                 <div
                   className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out"
                   style={{
@@ -142,13 +142,13 @@ export default function SkillsSection() {
         {/* Machine Learning Libraries Section */}
         {activeCategory === "programming" && (
           <div
-            className="mt-8 sm:mt-10 p-5 sm:p-6 bg-[var(--bg-secondary)] rounded-xl shadow-lg"
+            className="mt-6 sm:mt-8 md:mt-10 p-4 sm:p-5 md:p-6 bg-[var(--bg-secondary)] rounded-lg sm:rounded-xl shadow-lg"
             style={{ border: "1.5px solid var(--sidebar-border)" }}
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-3 text-[var(--accent-color)]">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-[var(--accent-color)]">
               Machine Learning Libraries
             </h3>
-            <div className="flex flex-wrap gap-2 sm:gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {[
                 "scikit-learn",
                 "NumPy",
@@ -160,7 +160,7 @@ export default function SkillsSection() {
               ].map((lib, index) => (
                 <span
                   key={index}
-                  className="px-3 sm:px-4 py-1.5 bg-[var(--bg-hover)] rounded-full text-xs sm:text-sm font-medium border border-[var(--border-color)] hover:scale-105 transition-transform duration-200"
+                  className="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 bg-[var(--bg-hover)] rounded-full text-xs sm:text-sm font-medium border border-[var(--border-color)] hover:scale-105 transition-transform duration-200"
                 >
                   {lib}
                 </span>

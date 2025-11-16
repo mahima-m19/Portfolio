@@ -2,10 +2,12 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
 
 export default function HeroSection() {
   const { theme } = useTheme();
+  const router = useRouter();
 
   // Bronze for dark theme, Blue for light theme
   const circleColor =
@@ -18,7 +20,11 @@ export default function HeroSection() {
   ]);
 
   // Typing animation state
-  const strings = useMemo(() => ["Web Developer", "UI/UX Designer", "Creative Thinker"], []);
+  const strings = useMemo(
+    () => ["Machine Learning Engineer", "Data Analyst", "Python Developer"],
+    []
+  );
+
   const [text, setText] = useState("");
   const [stringIndex, setStringIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -57,73 +63,82 @@ export default function HeroSection() {
   }, [charIndex, stringIndex, strings]);
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
-      {/* This ensures the main content area has the right background */}
-      {/* Animated Semi-Transparent Circles */}
-      {positions.map((circle, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full transition-all duration-[3000ms] ease-in-out backdrop-blur-sm"
-          style={{
-            top: circle.top,
-            left: circle.left,
-            width: circle.size,
-            height: circle.size,
-            backgroundColor: circleColor,
-          }}
-        ></div>
-      ))}
+    <main className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
+      {/* Animated Semi-Transparent Circles - Hidden on mobile for better performance */}
+      <div className="hidden md:block">
+        {positions.map((circle, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full transition-all duration-[3000ms] ease-in-out backdrop-blur-sm"
+            style={{
+              top: circle.top,
+              left: circle.left,
+              width: circle.size,
+              height: circle.size,
+              backgroundColor: circleColor,
+            }}
+          ></div>
+        ))}
+      </div>
 
       {/* Content Wrapper */}
-      <div className="relative flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-16 lg:gap-20 max-w-7xl w-full z-10">
+      <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 max-w-7xl w-full z-10">
         {/* Left Text Section */}
-        <div className="flex-1 text-center lg:text-left">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-none mb-3">
+        <div className="flex-1 text-center lg:text-left w-full">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-tight mb-3">
             Port<span className="text-[var(--text-secondary)]">folio</span>
           </h1>
-          <div className="w-32 h-[3px] bg-[var(--accent-color)] mb-10 mx-auto lg:mx-0"></div>
+          <div className="w-24 sm:w-32 h-[3px] bg-[var(--accent-color)] mb-6 sm:mb-8 md:mb-10 mx-auto lg:mx-0"></div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 sm:mb-6">
             Mahima M
           </h2>
 
           {/* Typing Text */}
-          <p className="text-xl sm:text-2xl mb-10 text-[var(--text-secondary)]">
-            I&apos;m{" "}
-            <span className="border-b-2 border-[var(--accent-color)] pb-1 animate-pulse">
-              {text}
-            </span>
-          </p>
+          <div className="min-h-[2.5rem] sm:min-h-[3rem] mb-6 sm:mb-8 md:mb-10">
+            <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)]">
+              I&apos;m{" "}
+              <span className="border-b-2 border-[var(--accent-color)] pb-1 animate-pulse inline-block">
+                {text}
+              </span>
+            </p>
+          </div>
 
-          <p className="text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed mb-14 max-w-xl mx-auto lg:mx-0">
-            Passionate about creating exceptional digital experiences that blend
-            innovative design with functional development. Let&apos;s bring your
-            vision to life.
+          <p className="text-[var(--text-secondary)] text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 md:mb-14 max-w-xl mx-auto lg:mx-0">
+            Passionate about building intelligent, scalable solutions that
+            combine smart engineering with seamless user experiences. Let's
+            transform innovative ideas into impactful reality together!
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-14 justify-center lg:justify-start">
-            <button className="px-8 sm:px-10 py-3 sm:py-4 bg-[var(--button-primary)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 mb-10 sm:mb-12 md:mb-14 justify-center lg:justify-start">
+            <button
+              onClick={() => router.push("#projects")}
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-[var(--button-primary)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300 text-sm sm:text-base"
+            >
               View My Work
             </button>
-            <button className="px-8 sm:px-10 py-3 sm:py-4 border-2 border-[var(--accent-color)] text-[var(--text-primary)] rounded-full font-semibold hover:bg-[var(--accent-color)] hover:text-[var(--button-text)] transition-all duration-300">
+            <button
+              onClick={() => router.push("#contact")}
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 border-2 border-[var(--accent-color)] text-[var(--text-primary)] rounded-full font-semibold hover:bg-[var(--accent-color)] hover:text-[var(--button-text)] transition-all duration-300 text-sm sm:text-base"
+            >
               Get In Touch
             </button>
           </div>
         </div>
 
         {/* Right Image Section */}
-        <div className="relative flex-1 flex justify-center">
+        <div className="relative flex-1 flex justify-center w-full lg:w-auto">
           {/* Semi-Transparent Box Behind Photo */}
           <div
-            className="absolute w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[380px] md:h-[480px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] shadow-[0_25px_80px_rgba(0,0,0,0.6)] translate-x-4 translate-y-4 sm:translate-x-6 sm:translate-y-6 backdrop-blur-sm transition-colors duration-300"
+            className="absolute w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)] translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 md:translate-x-6 md:translate-y-6 backdrop-blur-sm transition-colors duration-300"
             style={{ backgroundColor: circleColor }}
           ></div>
 
           {/* Portrait */}
-          <div className="relative w-[280px] h-[360px] sm:w-[340px] sm:h-[440px] md:w-[380px] md:h-[480px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
+          <div className="relative w-[240px] h-[310px] sm:w-[280px] sm:h-[360px] md:w-[340px] md:h-[440px] lg:w-[380px] lg:h-[480px] xl:w-[420px] xl:h-[520px] rounded-3xl sm:rounded-[2.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-xl sm:shadow-[0_25px_80px_rgba(0,0,0,0.6)]">
             <Image
-              src="/img/profile-img.jpeg"
+              src="/img/hero-img.jpeg"
               alt="Mahima M"
               width={520}
               height={520}

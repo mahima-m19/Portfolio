@@ -69,14 +69,15 @@ export default function ProjectsSection() {
     },
   ];
 
-
   return (
-    <main className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
+    <main className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
       <div className="relative max-w-5xl w-full z-10">
         {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-2">Projects</h1>
-          <p className="text-[var(--text-secondary)] text-sm sm:text-base">
+        <div className="mb-5 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3">
+            Projects
+          </h1>
+          <p className="text-[var(--text-secondary)] text-xs sm:text-sm md:text-base">
             A showcase of my recent work and personal projects
           </p>
         </div>
@@ -101,10 +102,10 @@ export default function ProjectsSection() {
 
               {/* Project Content */}
               <div className="p-3 sm:p-4">
-                <h3 className="text-lg sm:text-xl font-bold mb-1.5">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5">
                   {project.title}
                 </h3>
-                <p className="text-[var(--text-secondary)] text-sm leading-snug mb-2 line-clamp-2">
+                <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-snug mb-2 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -125,6 +126,8 @@ export default function ProjectsSection() {
                   {project.github && (
                     <a
                       href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[var(--bg-hover)] hover:bg-[var(--accent-color)] hover:text-[var(--button-text)] rounded-lg transition-all duration-300 text-sm font-medium flex-1"
                     >
                       <Github size={14} />
@@ -134,6 +137,8 @@ export default function ProjectsSection() {
                   {project.live && (
                     <a
                       href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[var(--accent-color)] text-[var(--button-text)] hover:opacity-90 rounded-lg transition-all duration-300 text-sm font-medium flex-1"
                     >
                       <ExternalLink size={14} />

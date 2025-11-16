@@ -59,7 +59,7 @@ export default function ContactSection() {
 
       showToast(
         "success",
-        "Message sent successfully! I&apos;ll get back to you soon."
+        "Message sent successfully! I'll get back to you soon."
       );
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
@@ -80,21 +80,24 @@ export default function ContactSection() {
   };
 
   return (
-    <main className="relative flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
+    <main className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 md:py-20 bg-[var(--bg-primary)] text-[var(--text-primary)] lg:ml-[22rem] overflow-hidden transition-colors duration-300">
       <div className="relative max-w-6xl w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
-          {/* Left Column - Contact Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+          {/* Left Column - Contact Form */}
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
               Get In Touch
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-6 sm:mb-8">
+            <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-5 sm:mb-6 md:mb-8">
               Have a project in mind or want to discuss opportunities? Drop me a
-                message and I&apos;ll get back to you as soon as possible.
+              message and I&apos;ll get back to you as soon as possible.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4 sm:space-y-5 md:space-y-6"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                 <input
                   type="text"
                   name="name"
@@ -102,7 +105,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   autoComplete="off"
-                  className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
+                  className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                   required
                   disabled={isSubmitting}
                 />
@@ -113,7 +116,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="off"
-                  className="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
+                  className="px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                   required
                   disabled={isSubmitting}
                 />
@@ -126,7 +129,7 @@ export default function ContactSection() {
                 value={formData.subject}
                 onChange={handleChange}
                 autoComplete="off"
-                className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
+                className="w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors"
                 required
                 disabled={isSubmitting}
               />
@@ -137,8 +140,8 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={handleChange}
                 autoComplete="off"
-                rows={6}
-                className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors resize-none"
+                rows={5}
+                className="w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl border-2 border-[var(--border-color)] focus:border-[var(--accent-color)] outline-none transition-colors resize-none"
                 required
                 disabled={isSubmitting}
               />
@@ -147,76 +150,77 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base bg-[var(--accent-color)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base bg-[var(--accent-color)] text-[var(--button-text)] rounded-full font-semibold hover:opacity-90 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>
           </div>
-          {/* Right Column - Contact Form */}
+
+          {/* Right Column - Contact Info */}
           <div
-            className="p-6 sm:p-8 lg:p-10 bg-[var(--bg-secondary)] rounded-2xl sm:rounded-3xl shadow-2xl"
+            className="p-5 sm:p-6 md:p-8 lg:p-10 bg-[var(--bg-secondary)] rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl"
             style={{ border: "2px solid var(--sidebar-border)" }}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
               Contact Info
             </h2>
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mb-8 sm:mb-10">
+            <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 sm:mb-8 md:mb-10">
               Feel free to reach out to me for any inquiries, collaborations, or
               just to say hello. I&apos;m always excited to connect with fellow
               developers and potential clients.
             </p>
 
-            <div className="flex items-start gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <div className="p-3 sm:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
+            <div className="flex items-start gap-3 sm:gap-4 mb-5 sm:mb-6 md:mb-8">
+              <div className="p-2.5 sm:p-3 md:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
                 <MapPin
-                  size={20}
-                  className="sm:w-6 sm:h-6 text-[var(--accent-color)]"
+                  size={18}
+                  className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[var(--accent-color)]"
                 />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">
                   Our Location
                 </h3>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+                <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)]">
                   Mysore, Karnataka
                 </p>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+                <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)]">
                   India, 570001
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <div className="p-3 sm:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
+            <div className="flex items-start gap-3 sm:gap-4 mb-5 sm:mb-6 md:mb-8">
+              <div className="p-2.5 sm:p-3 md:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
                 <Phone
-                  size={20}
-                  className="sm:w-6 sm:h-6 text-[var(--accent-color)]"
+                  size={18}
+                  className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[var(--accent-color)]"
                 />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">
                   Phone Number
                 </h3>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+                <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)]">
                   +91 8746937048
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3 sm:gap-4">
-              <div className="p-3 sm:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
+              <div className="p-2.5 sm:p-3 md:p-4 bg-[var(--bg-hover)] rounded-full flex-shrink-0">
                 <Mail
-                  size={20}
-                  className="sm:w-6 sm:h-6 text-[var(--accent-color)]"
+                  size={18}
+                  className="sm:w-5 sm:h-5 md:w-6 md:h-6 text-[var(--accent-color)]"
                 />
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2">
                   Email Address
                 </h3>
-                <p className="text-sm sm:text-base text-[var(--text-secondary)] break-all">
+                <p className="text-xs sm:text-sm md:text-base text-[var(--text-secondary)] break-all">
                   mahimaaamurali@gmail.com
                 </p>
               </div>
@@ -225,26 +229,29 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Toast Notification - Left Side */}
+      {/* Toast Notification - Responsive Position */}
       {toast.show && (
-        <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 animate-slide-in">
-          <div className="flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] backdrop-blur-sm">
+        <div className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 z-50 animate-slide-in max-w-[calc(100vw-2rem)] sm:max-w-md">
+          <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-2xl bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] backdrop-blur-sm">
             {toast.type === "success" ? (
               <CheckCircle
-                size={24}
-                className="flex-shrink-0 text-[var(--accent-color)]"
+                size={20}
+                className="sm:w-6 sm:h-6 flex-shrink-0 text-[var(--accent-color)]"
               />
             ) : (
-              <AlertCircle size={24} className="flex-shrink-0 text-red-500" />
+              <AlertCircle
+                size={20}
+                className="sm:w-6 sm:h-6 flex-shrink-0 text-red-500"
+              />
             )}
-            <p className="text-sm sm:text-base font-medium max-w-xs text-[var(--text-primary)]">
+            <p className="text-xs sm:text-sm md:text-base font-medium text-[var(--text-primary)]">
               {toast.message}
             </p>
             <button
               onClick={() => setToast({ ...toast, show: false })}
-              className="ml-2 hover:opacity-70 transition-opacity text-[var(--text-secondary)]"
+              className="ml-1 sm:ml-2 hover:opacity-70 transition-opacity text-[var(--text-secondary)] flex-shrink-0"
             >
-              <X size={20} />
+              <X size={16} className="sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
